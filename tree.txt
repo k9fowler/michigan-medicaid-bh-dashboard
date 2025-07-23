@@ -1,0 +1,10 @@
+.
+├── analyze.py
+├── data
+├── requirements.txt
+├── src
+│   ├── apiscrape.py
+│   └── datacleanser.py
+└── tree.txt
+
+3 directories, 5 files
