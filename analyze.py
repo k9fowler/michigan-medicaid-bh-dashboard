@@ -100,7 +100,7 @@ def main():
         print("   No 2025 data available")
     
     # 4. Top 5 MCOs (2025) - Comprehensive MCOs only
-    print("\n4. Top 5 Comprehensive MCOs by Patient Volume (2025):")
+    print("\n4. Top 5 MCOs by Patient Volume (2025 - Comprehensive MCOs):")
     mco_2025 = df[(df['County'] == 'All') & 
                   (df['Calendar Year'] == 2025) & 
                   (df['MCO Name'] != 'All') & 
@@ -112,8 +112,22 @@ def main():
     else:
         print("   No 2025 Comprehensive MCO data available")
     
-    # 5. Average % of Eligible Patients Receiving Services
-    print("\n5. Average % of Eligible Patients Receiving Services:")
+    # 5. Total Patient Volume by Plan Category (2025)
+    print("\n5. Total Patient Volume by Plan Category (2025):")
+    plan_cat_2025 = df[(df['County'] == 'All') & 
+                       (df['Plan Category'] != 'Outpatient Specialty Health Plan (PAHP)') &
+                       (df['Calendar Year'] == 2025)]
+    if len(plan_cat_2025) > 0:
+        total_plan_volume = plan_cat_2025['Number of Active Patients'].sum()
+        plan_volumes = plan_cat_2025.groupby('Plan Category')['Number of Active Patients'].sum().sort_values(ascending=False)
+        for plan_cat, patients in plan_volumes.items():
+            print(f"   {plan_cat}: {patients:,.0f} patients")
+        print("   No data available for Outpatient Specialty Health Plan (PAHP)")
+    else:
+        print("   No 2025 plan category data available")
+    
+    # 6. Average % of Eligible Patients Receiving Services
+    print("\n6. Average % of Eligible Patients Receiving Services:")
     avg_utilization = all_mco_df['Percent Of Eligible Patients Receving Services'].mean()
     print(f"   Overall average: {avg_utilization*100:.1f}%")
     
@@ -123,8 +137,8 @@ def main():
     for year, pct in yearly_utilization.items():
         print(f"     {year}: {pct*100:.1f}%")
     
-    # 6. Average Active Patients per Provider
-    print("\n6. Average Active Patients per Provider:")
+    # 7. Average Active Patients per Provider
+    print("\n7. Average Active Patients per Provider:")
     
     # Extract number before first colon from the ratio string
     def extract_ratio(ratio_str):
