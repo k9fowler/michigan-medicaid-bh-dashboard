@@ -10,8 +10,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 import sys
 import os
-from src.apiscraper import MedicaidAPIScraper
-from src.datacleaner import MedicaidDataCleaner
+from apiscraper import MedicaidAPIScraper
+from datacleaner import MedicaidDataCleaner
 
 # Page config
 st.set_page_config(
