@@ -1,4 +1,4 @@
-Michigan Medicaid Behavioral Health Analysis
+# Michigan Medicaid Behavioral Health Analysis
 A comprehensive data analysis pipeline and interactive dashboard examining Michigan's Medicaid Managed Care behavioral health services from 2020-2025.
 
 ## Project Information
@@ -32,26 +32,29 @@ This project analyzes 5 years of Medicaid Managed Care data to provide insights 
 ### Installation
 
 1. Clone the repository:
-git clone https://github.com/yourusername/honorsproject.git
-cd honorsproject
+```bash
+git clone https://github.com/k9fowler/michigan-medicaid-bh-dashboard.git
+cd michigan-medicaid-bh-dashboard
+```
 
 2. Create a virtual environment (recommended):
-
+```bash
 python -m venv venv
-source venv/bin/activate  
-# On Windows: venv\Scripts\activate
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
 3. Install dependencies:
+```bash
+pip install -r requirements.txt # Anaconda Users: conda install -r requirements.txt
+```
 
-pip install -r requirements.txt
-# Anaconda Users: conda install -r requirements.txt
-
-4. Running the Analysis
-# Note: Must be run from terminal/command prompt, not from within Spyder or Jupyter! 
+## Running the Analysis 
+**Note**: Must be run from terminal/command prompt, not from within Spyder or Jupyter! 
 
 From the project root directory, run:
-
+```bash
 python analyze.py
+```
 
 The analysis will:
 - Fetch/load data from CMS API
@@ -59,13 +62,15 @@ The analysis will:
 - Generate console analysis report
 - Launch interactive dashboard
 
-5. View Dashboard 
-# WSL Users must manually open localhost:8501 - no browsers in linux subsystem 
+## View Dashboard 
+**Note**: WSL Users must manually open localhost:8501 - no browsers in linux subsystem 
+
 Open your browser to: http://localhost:8501 (if dashboard does not automatically open)
 
 
 
 ## Project Structure - cat tree.txt to view in terminal
+```bash
 honorsproject/
 ├── analyze.py              # Main analysis script
 ├── requirements.txt        # Python dependencies
@@ -80,6 +85,7 @@ honorsproject/
 │   └── medicaid_data_dictionary.pdf # CMS data definitions
 └── assets/
     └── university_logo.png # Wayne State branding
+```
 
 ## Tech Stack
 Data Processing: pandas, numpy
@@ -108,6 +114,7 @@ Data Tables
 - Time series analysis by organization
 
 ## Command Line Options
+```bash
 # Force refresh data from API
 python analyze.py --refresh
 
@@ -116,6 +123,7 @@ python analyze.py --full
 
 # Save cleaned data
 python analyze.py --save-clean
+```
 
 ## Data Source
 CMS Medicaid Managed Care Dataset
@@ -129,5 +137,5 @@ Data Quality: Eligible patient counts are aggregated from county-level data due 
 Plan Types: Analysis focuses on Comprehensive MCOs and PIHPs, excluding PAHPs
 Time Period: 2025 data reflects post-pandemic Medicaid unwinding impact
 This project is submitted as part of academic coursework at Wayne State University.
-
+---
 For questions or issues, contact: hp2366@wayne.edu
