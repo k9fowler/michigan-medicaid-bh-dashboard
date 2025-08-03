@@ -1,10 +1,12 @@
 .
 ├── analyze.py
+├── assets
 ├── data
 ├── requirements.txt
 ├── src
-│   ├── apiscrape.py
-│   └── datacleanser.py
+│   ├── apiscraper.py
+│   ├── dashboard.py
+│   └── datacleaner.py
 └── tree.txt
 
-3 directories, 5 files
+4 directories, 6 files

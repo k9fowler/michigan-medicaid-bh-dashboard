@@ -33,10 +33,14 @@ Output: Console analysis report + Interactive Streamlit dashboard
 # Imports
 import argparse
 import sys
+import os
 from datetime import datetime
 from src.apiscraper import MedicaidAPIScraper
 from src.datacleaner import MedicaidDataCleaner
 import subprocess
+import webbrowser
+import time
+import threading
 
 
 def print_header():
@@ -588,18 +592,41 @@ def main():
     print("✓ Analysis complete!")
     print("="*60)
 
+    # Launch dashboard
+    print("\n" + "="*60)
+    print("Launching interactive dashboard...")
+    print("="*60)
+
+    # Function to open browser after delay
+    def open_browser():
+        time.sleep(3)
+        try:
+            # Try different methods depending on the system
+            import platform
+            system = platform.system()
+            
+            if system == 'Linux':
+                os.system('xdg-open http://localhost:8501 2>/dev/null || firefox http://localhost:8501 2>/dev/null || google-chrome http://localhost:8501 2>/dev/null')
+            else:
+                webbrowser.open('http://localhost:8501')
+        except:
+            pass
+
+    # Start browser opener in background
+    threading.Thread(target=open_browser, daemon=True).start()
+
+    # Launch Streamlit with specific flags to prevent its own browser opening
+    dashboard_path = os.path.join("src", "dashboard.py")
+    subprocess.run([
+        "streamlit", "run", dashboard_path,
+        "--server.port", "8501",
+        "--server.headless", "true",
+        "--browser.gatherUsageStats", "false"
+    ])
+
+    return 0
 
 if __name__ == "__main__":
     # Run the analysis
     result = main()
     
-    # If analysis was successful, launch dashboard
-    if result == 0 or result is None:
-        print("\n" + "="*60)
-        print("Launching interactive dashboard...")
-        print("="*60)
-        
-        subprocess.run(["streamlit", "run", "src/dashboard.py"])
-    else:
-        print("\n✗ Analysis failed, not launching dashboard")
-        sys.exit(result)
