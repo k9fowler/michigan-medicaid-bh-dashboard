@@ -10,7 +10,7 @@ A comprehensive data analysis pipeline and interactive dashboard examining Michi
 
 ## Project Overview
 
-This project analyzes 5 years of Medicaid Managed Care data to provide insights into:
+This project analyzes 6 years of Medicaid Managed Care data to provide insights into:
 - Behavioral health service utilization patterns
 - MCO (Managed Care Organization) market dynamics
 - Provider network evolution
@@ -133,9 +133,10 @@ Updated: Quarterly
 Records: ~23,000 (filtered to ~11,000 for Michigan behavioral health)
 
 ## Important Notes
-Data Quality: Eligible patient counts are aggregated from county-level data due to inconsistencies in state-level reporting
-Plan Types: Analysis focuses on Comprehensive MCOs and PIHPs, excluding PAHPs
-Time Period: 2025 data reflects post-pandemic Medicaid unwinding impact
-This project is submitted as part of academic coursework at Wayne State University.
+- Data Quality: Eligible patient counts are aggregated from county-level data due to inconsistencies in state-level reporting
+- Plan Types: Analysis focuses on Comprehensive MCOs and PIHPs, excluding PAHPs
+- Time Period: 2025 data reflects post-pandemic Medicaid unwinding impact
+- This project is submitted as part of academic coursework at Wayne State University.
+
 ---
 For questions or issues, contact: hp2366@wayne.edu
