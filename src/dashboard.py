@@ -10,10 +10,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 import sys
 import os
-
-# Add parent directory to path to import from src
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 from src.apiscraper import MedicaidAPIScraper
 from src.datacleaner import MedicaidDataCleaner
 
